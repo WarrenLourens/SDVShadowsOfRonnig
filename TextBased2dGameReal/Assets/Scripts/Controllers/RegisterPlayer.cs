@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mono.Data.Sqlite;
 using System.Data;
 using System;
 using UnityEngine.UI;
+using SQLite4Unity3d;
 
 public class RegisterPlayer : MonoBehaviour
 
@@ -18,52 +18,38 @@ public class RegisterPlayer : MonoBehaviour
     void Start()
     {
         
-        ReadData();
+  
     }
-     public void InputData() {
-        string dbLogin = "URI=file:" + Application.dataPath + "/ShadowOfRonnin.sqlite";
-        IDbConnection dbconn;
-        dbconn = (IDbConnection)new SqliteConnection(dbLogin);
-        dbconn.Open(); //Open connection to the database.
-        IDbCommand dbcmd = dbconn.CreateCommand();
-        string sqlQuery = "INSERT INTO Login(user_name , password) VALUES(' " + user_name.text+ " ' ,' " + password.text+" ');";
-        dbcmd.CommandText = sqlQuery;
-        IDataReader reader = dbcmd.ExecuteReader();
-        
-        reader.Close();
-        reader = null;
-        dbcmd.Dispose();
-        dbcmd = null;
-        dbconn.Close();
-        dbconn = null;
+     public void CheckUserPassword() {
 
-
-    }
-   void ReadData()
-    {
-        string dbLogin = "URI=file:" + Application.dataPath + "/ShadowOfRonnin.sqlite";
-        IDbConnection dbconn;
-        dbconn = (IDbConnection)new SqliteConnection(dbLogin);
-        dbconn.Open(); //Open connection to the database.
-        IDbCommand dbcmd = dbconn.CreateCommand();
-        string sqlQuery = "SELECT ID,user_name,password " + "FROM Login";
-        dbcmd.CommandText = sqlQuery;
-        IDataReader reader = dbcmd.ExecuteReader();
-        while (reader.Read())
+        switch (GameModel.CheckPassword(user_name.text, password.text))
         {
-            int ID = reader.GetInt32(0);
-            string user_name = reader.GetString(1);
-            string password = reader.GetString(2);
-
-           // player_Name.GetComponent<Text>().text = user_name;
+            case GameModel.PasswdMode.OK:
+                Debug.Log("Good Login");
+              //  GetPlayer();
+                // Put name into the text 
+                // Gto to the scene or locaiton
+                break;
+            case GameModel.PasswdMode.NeedName:
+                Debug.Log("Need to Register because it is a new name");
+                break;
+            case GameModel.PasswdMode.NeedPassword:
+                Debug.Log("Bad password");
+                break;
 
         }
-        reader.Close();
-        reader = null;
-        dbcmd.Dispose();
-        dbcmd = null;
-        dbconn.Close();
-        dbconn = null;
+
+    }
+   public void Register()
+    {
+        GameModel.RegisterPlayer(user_name.text, password.text);
+        Debug.Log("you have created a database and table");
+
+    }
+   void GetPlayer()
+    {
+        GameModel.currentPlayer = GameModel.ds.getPlayer(user_name.text);
+      
     }
 
   

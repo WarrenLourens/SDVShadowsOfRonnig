@@ -12,7 +12,7 @@ public class PlayerMove : MonoBehaviour
     private Animator myAnimator;
     [SerializeField]
     private float MoveSpeed;
-   
+    public float StartPoint;
     void Start()
     {
         facingRight = true;
@@ -33,6 +33,7 @@ public class PlayerMove : MonoBehaviour
     void FixedUpdate()
     {// The movement code is placed in FixedUpdate as we are dealing with physics 
         float horizontal = Input.GetAxis("Horizontal");
+       // GameModel.currentPlayer.LocationX = horizontal;
 
         HandleMovement(horizontal);
         Flip(horizontal);
