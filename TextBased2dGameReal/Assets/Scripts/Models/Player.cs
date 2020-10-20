@@ -21,4 +21,5 @@ public class Player  // the player class
     public int Health { get => health; set => health = value; }
     public int Wealth { get => wealth; set => wealth = value; }
     public float LocationX { get; set; }
+    public float LocationY { get; set; }//test location
 }
