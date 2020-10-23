@@ -9,11 +9,9 @@ using SQLite4Unity3d;
 public class RegisterPlayer : MonoBehaviour
 
 {
-  
     // public GameObject player_Name;
     public InputField user_name;
     public InputField password;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +41,6 @@ public class RegisterPlayer : MonoBehaviour
    public void Register()
     {
         GameModel.RegisterPlayer(user_name.text, password.text);
-        Debug.Log("you have created a database and table");
 
     }
    void GetPlayer()

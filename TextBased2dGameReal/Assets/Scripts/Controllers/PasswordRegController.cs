@@ -1,15 +1,36 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PasswordRegController : MonoBehaviour
 {
+   public Text Score;
     public GameObject RegPanel;
     public GameObject PasspromptPanel;
     public InputField User_Name;
     public InputField Password;
+   
+    public void StartScore()
+    {
+        if (GameModel.currentPlayer != null) { 
+           Score.text = GameModel.currentPlayer.HiScore.ToString();
+        }
+    }
+    //public void UpdateScore()
+    //{
+
+    //    if (GameModel.currentPlayer != null)
+    //    {
+    //        int newScore = 0;
+    //        newScore = Convert.ToInt32(Score.text) + 1;
+    //        GameModel.currentPlayer.HiScore = newScore;
+    //        GameModel.ds.storePlayer(GameModel.currentPlayer);
+    //        Score.text = newScore.ToString();
+    //    }
+    //}
 
     private void HidePanels()
     {
@@ -65,10 +86,11 @@ public class PasswordRegController : MonoBehaviour
     {
         RegPanel.SetActive(false);// sets the registration panels to false on start
         PasspromptPanel.SetActive(false);
+        StartScore();
         
     }
 
-    // Update is called once per frame
+    //// Update is called once per frame
     //void Update()
     //{
         

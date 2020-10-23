@@ -16,7 +16,7 @@ public class PlayerPosition : MonoBehaviour
 
      void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) // Reloads the Game scene if the spacebar has been pressed.
+        if (Input.GetKeyDown(KeyCode.LeftAlt)) // Reloads the Game scene if the spacebar has been pressed.
         {
             SceneManager.LoadScene("Game");
         }

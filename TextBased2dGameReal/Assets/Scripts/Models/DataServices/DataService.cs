@@ -140,9 +140,9 @@ public class DataService  {
     }
     public Location storeNewLocation(string pName, string pStory)
     {
-        Location newLocation = new Location
+        Location newLocation = new Location// creating a new object of type location
         {
-            Name = pName,
+            Name = pName,// setting the parameter value against the property of the class Location
             Story = pStory
         };
         _connection.Insert(newLocation); // Store the location 
@@ -183,8 +183,15 @@ public class DataService  {
             Wealth = pWealth
 
         };
-        _connection.InsertOrReplace(player);
+        _connection.Insert(player);
         return player;
+    }
+
+    public void  storePlayer(Player pPlayer)
+    {
+        
+        _connection.InsertOrReplace(pPlayer);
+   
     }
 
     public Player getPlayer(string pPlayerName)// Method with a where clause to retrieve the player name

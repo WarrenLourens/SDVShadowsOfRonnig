@@ -12,6 +12,7 @@ public class CheckpointController : MonoBehaviour
     {
         if (instance == null)// Checks to see if the instance object has been created
         {
+            GameModel.CP = this;
             instance = this;// If there is current instance game object then set the current game object 
             DontDestroyOnLoad(instance); // Don't destroy the game object 
         }

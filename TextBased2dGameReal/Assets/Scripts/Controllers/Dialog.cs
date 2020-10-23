@@ -9,9 +9,12 @@ public class Dialog : MonoBehaviour
     public string PlayerInput;
     public GameObject InputField;
     public GameObject textDisplay;
+    public GameObject HighScore;
 
+  
     public void StoreInput()
     {
+  
         PlayerInput =  InputField.GetComponent<Text>().text;
      //This is the switch statement that is used to determine which action needs to be taken based on the user's input. The ToLower fuction is called to convert input to lower case
             switch (PlayerInput.ToLower()) {
@@ -32,6 +35,12 @@ public class Dialog : MonoBehaviour
                 break;
             case "close bags":
                 SceneManager.LoadScene("Game");
+                break;
+            case "show highscore":
+                HighScore.gameObject.SetActive(true);
+                break;
+            case "close highscore":
+                HighScore.gameObject.SetActive(false);
                 break;
         }
 

@@ -10,6 +10,7 @@ public class Player  // the player class
     private int location;
     private int health;
     private int wealth;
+    private  int hi_score;
 
     // what about inventory?
     [PrimaryKey, AutoIncrement] // declairs the primary key and sets its state to increment
@@ -20,6 +21,21 @@ public class Player  // the player class
     public int  LocationId { get => location; set => location = value; }
     public int Health { get => health; set => health = value; }
     public int Wealth { get => wealth; set => wealth = value; }
-    public float LocationX { get; set; }
-    public float LocationY { get; set; }//test location
+    public int HiScore { get => hi_score; set => hi_score = value; }
+    public float X { get; set; }
+    public float Y { get; set; }
+    public float Z { get; set; }
+
+    public Vector3 GetTransform() {
+        Vector3 result;
+        result.x = X;
+        result.y = Y;
+        result.z = Z;
+        return result;
+
+    }
+  public void SetTransform()
+    {
+
+    }
 }

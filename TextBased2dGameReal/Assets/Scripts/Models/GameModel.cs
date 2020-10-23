@@ -2,11 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
 using System.IO;
-
-
-
 using System.Text;
 using SQLite4Unity3d;
 
@@ -14,7 +10,7 @@ using SQLite4Unity3d;
 
 public static class GameModel
 {
- 
+    public static CheckpointController CP;
 	static String _name;
 
 	public static string Name{
@@ -29,7 +25,6 @@ public static class GameModel
 	}
 
     public static Location currentLocale;
-    
     public static Player currentPlayer = null;
     public static Location startLocation;
     public static DataService ds = new DataService("ShadowsOfRonnin.db");
@@ -71,10 +66,13 @@ public static class GameModel
     public static void RegisterPlayer(string pName, string pPassword) // registers the player using the input from the input textboxes
     {
        
-        GameModel.currentPlayer = GameModel.ds.storeNewPlayer(pName, pPassword, GameModel.currentLocale.Id, 100, 200);
+        GameModel.currentPlayer = GameModel.ds.storeNewPlayer(pName, pPassword, GameModel.currentLocale.Id, 100, 200);// justa adding the current location which is the starting location
     }
-
-
+    //public  void SavePlayer()
+    //{
+    //    GameModel.ds.storePlayer(GameModel.currentPlayer);
+    //}
+   
     public static void SetupGame()
     {
         ds.CreateDB();
@@ -87,7 +85,7 @@ public static class GameModel
         {
 
             Location forest, castle;
-            currentLocale = GameModel.ds.storeNewLocation("Forest", " Run!! ");
+            currentLocale = GameModel.ds.storeNewLocation("Forest", " Run!! ");// I understand the code
 
             forest = currentLocale;
 
