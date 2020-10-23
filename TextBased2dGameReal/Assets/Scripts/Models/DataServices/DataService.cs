@@ -129,7 +129,7 @@ public class DataService  {
                                                       && tf.Direction == pDirection).FirstOrDefault();      
     }
 
-    public Location GetLocation(int pLocationID)
+    public Location GetLocation(int pLocationID)// This method is called in the getPlayerLocation method below
     {
         return _connection.Table<Location>().Where(l => l.Id == pLocationID).FirstOrDefault();
     }
@@ -137,7 +137,21 @@ public class DataService  {
     public Location GetPlayerLocation (Player aPlayer)
     {
         return GetLocation(aPlayer.LocationId);
+
     }
+    //##################################################################################################
+    // Added method of updateing the private X,Y proprties in the player 
+    public Player CpLocation(float pX, float pY)
+    {
+        Player newLocation = new Player
+        {
+            X = pX,
+            Y = pY
+        };
+        _connection.Insert(newLocation);
+        return newLocation;
+    }
+    //##################################################################################################
     public Location storeNewLocation(string pName, string pStory)
     {
         Location newLocation = new Location// creating a new object of type location
@@ -167,12 +181,11 @@ public class DataService  {
         _connection.Insert(f);
 
     }
-
-
-    // Player
-    public Player storeNewPlayer(string pName,   string pPassword , 
-                            int pLocationId,  int pHealth,
-                            int pWealth)
+    //added the X,Y positions as starting locations#####################################################
+   // Player
+    public Player storeNewPlayer(string pName, string pPassword,
+                            int pLocationId, int pHealth,
+                            int pWealth, float pX, float pY)
     {
         Player player = new Player // creating a object of the player class
         {
@@ -180,12 +193,32 @@ public class DataService  {
             Password = pPassword,
             LocationId = pLocationId,
             Health = pHealth,
-            Wealth = pWealth
+            Wealth = pWealth,
+            X = pX,
+            Y = pY
 
         };
         _connection.Insert(player);
         return player;
     }
+    //################################################################################################
+    // Player
+    //public Player storeNewPlayer(string pName,   string pPassword , 
+    //                        int pLocationId,  int pHealth,
+    //                        int pWealth)
+    //{
+    //    Player player = new Player // creating a object of the player class
+    //    {
+    //        Name = pName,  // sets the private variable for the player  from the parameter name
+    //        Password = pPassword,
+    //        LocationId = pLocationId,
+    //        Health = pHealth,
+    //        Wealth = pWealth
+
+    //    };
+    //    _connection.Insert(player);
+    //    return player;
+    //}
 
     public void  storePlayer(Player pPlayer)
     {

@@ -74,8 +74,13 @@ public class PasswordRegController : MonoBehaviour
         }
         
     }
+    // ##########################Test method
+    //public void PlayerPosition() {
+    //    GameModel.SavePlayer();
+    //}
 
-    public void RegisterPlayer() // public  method called RegisterPlayer
+
+    public void RegisterPlayer() // public  method called RegisterPlayer accessable by unity game objects
     {
         GameModel.RegisterPlayer(User_Name.text, Password.text); // takes the input fields as parameters
         HidePanels(); // hides all the unneeded panel

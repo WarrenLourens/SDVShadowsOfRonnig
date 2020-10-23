@@ -24,18 +24,17 @@ public class Player  // the player class
     public int HiScore { get => hi_score; set => hi_score = value; }
     public float X { get; set; }
     public float Y { get; set; }
-    public float Z { get; set; }
+ 
+    // Not sure if these methods are needed anymore
+  //  public Vector2 GetTransform() {
+  //      Vector2 result;
+  //      result.x = X;
+  //      result.y = Y;
+  //      return result;
 
-    public Vector3 GetTransform() {
-        Vector3 result;
-        result.x = X;
-        result.y = Y;
-        result.z = Z;
-        return result;
+  //  }
+  //public void SetTransform()
+  //  {
 
-    }
-  public void SetTransform()
-    {
-
-    }
+  //  }
 }

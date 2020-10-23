@@ -23,7 +23,7 @@ public static class GameModel
 		}
 
 	}
-
+    // game model creates public objects of all the tables
     public static Location currentLocale;
     public static Player currentPlayer = null;
     public static Location startLocation;
@@ -43,10 +43,10 @@ public static class GameModel
     {
         PasswdMode result = GameModel.PasswdMode.AllBad;
 
-        Player aPlayer = ds.getPlayer(pName);
-        if( aPlayer != null)
+        Player aPlayer = ds.getPlayer(pName);//gets the player name from the database from the player table
+        if( aPlayer != null)// if it finds a matching player 
         {
-            if(aPlayer.Password == pPassword)
+            if(aPlayer.Password == pPassword)// if the player password matches the inputed password
             {
                 result = GameModel.PasswdMode.OK;
                 GameModel.currentPlayer = aPlayer; // << WATCHOUT THIS IS A SIDE EFFECT
@@ -66,13 +66,16 @@ public static class GameModel
     public static void RegisterPlayer(string pName, string pPassword) // registers the player using the input from the input textboxes
     {
        
-        GameModel.currentPlayer = GameModel.ds.storeNewPlayer(pName, pPassword, GameModel.currentLocale.Id, 100, 200);// justa adding the current location which is the starting location
+       // GameModel.currentPlayer = GameModel.ds.storeNewPlayer(pName, pPassword, GameModel.currentLocale.Id, 100, 200);// justa adding the current location which is the starting location
+        //################################################################################################
+        GameModel.currentPlayer = GameModel.ds.storeNewPlayer(pName, pPassword, GameModel.currentLocale.Id, 100, 200,(float) -3.218,(float) -4.54);
+       //################################################################################################
     }
-    //public  void SavePlayer()
-    //{
-    //    GameModel.ds.storePlayer(GameModel.currentPlayer);
-    //}
-   
+    public static void SavePlayer(float pX, float pY)//Test to update the current player x,y position########################
+    {
+        GameModel.ds.CpLocation(pX,pY);
+    }
+
     public static void SetupGame()
     {
         ds.CreateDB();

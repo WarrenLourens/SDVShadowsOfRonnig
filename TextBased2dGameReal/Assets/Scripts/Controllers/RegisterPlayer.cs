@@ -18,9 +18,9 @@ public class RegisterPlayer : MonoBehaviour
         
   
     }
-     public void CheckUserPassword() {
+     public void CheckUserPassword() {// unity accessable method
 
-        switch (GameModel.CheckPassword(user_name.text, password.text))
+        switch (GameModel.CheckPassword(user_name.text, password.text))// comparing the user input against the gameModel method
         {
             case GameModel.PasswdMode.OK:
                 Debug.Log("Good Login");
@@ -38,9 +38,9 @@ public class RegisterPlayer : MonoBehaviour
         }
 
     }
-   public void Register()
+   public void Register()// Method that is accessable by Unity 
     {
-        GameModel.RegisterPlayer(user_name.text, password.text);
+        GameModel.RegisterPlayer(user_name.text, password.text);// Places the user input fields as the parameters for the GameModel RegisterPlayer method
 
     }
    void GetPlayer()
