@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class ScoreUpdate : MonoBehaviour
+public  class ScoreUpdate : MonoBehaviour
 {
+    public GameObject CurrentScore;
     public GameObject playerScore;
-    public static int Points;
+    public static int Points=0;
 
     private void Start()
     {
-        playerScore.GetComponent<Text>().text = "Score: " + Points;
+      
+        CurrentScore.GetComponent<Text>().text = Points.ToString();
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
@@ -17,9 +19,10 @@ public class ScoreUpdate : MonoBehaviour
             if (collider.CompareTag("Player"))
             {
                 Points += 100;// adds 100 value to the points variable
-                playerScore.GetComponent<Text>().text = "Score: " + Points;
+                CurrentScore.GetComponent<Text>().text = Points.ToString();
+                playerScore.GetComponent<Text>().text = GameModel.PlayingPlayer +" : " + Points;// need to get the score from the player table
+                GameModel.UpdateScore(Points);
                 Destroy(this.gameObject);// destroys the coin after it has been collected
-
             }
         }   
     }

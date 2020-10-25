@@ -21,20 +21,9 @@ public class Player  // the player class
     public int  LocationId { get => location; set => location = value; }
     public int Health { get => health; set => health = value; }
     public int Wealth { get => wealth; set => wealth = value; }
-    public int HiScore { get => hi_score; set => hi_score = value; }
+    public int HiScore { get => hi_score; set => hi_score = value;  }
     public float X { get; set; }
     public float Y { get; set; }
  
-    // Not sure if these methods are needed anymore
-  //  public Vector2 GetTransform() {
-  //      Vector2 result;
-  //      result.x = X;
-  //      result.y = Y;
-  //      return result;
-
-  //  }
-  //public void SetTransform()
-  //  {
-
-  //  }
+   
 }

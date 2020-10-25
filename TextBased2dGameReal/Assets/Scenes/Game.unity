@@ -1119,7 +1119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94f6230db3164ea488a67c3ae5fa9397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerScore: {fileID: 2033004187}
+  CurrentScore: {fileID: 2033004187}
+  playerScore: {fileID: 1653251874}
 --- !u!58 &496488087
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2428,7 +2429,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -328, y: 362}
+  m_AnchoredPosition: {x: -443, y: 362}
   m_SizeDelta: {x: 108.82352, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1147652384
@@ -2463,7 +2464,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Player Name
+  m_Text: Ronnin
 --- !u!222 &1147652385
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2503,7 +2504,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94f6230db3164ea488a67c3ae5fa9397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerScore: {fileID: 2033004187}
+  CurrentScore: {fileID: 2033004187}
+  playerScore: {fileID: 1653251874}
 --- !u!58 &1221250331
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2949,6 +2951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05fafd44b8d57684fbaafc1fb4b2037a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerPlayer: {fileID: 1147652382}
   LastCheckpointPosition: {x: -3.218, y: -4.54}
 --- !u!4 &1522374982
 Transform:
@@ -3307,8 +3310,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 64, y: -86}
-  m_SizeDelta: {x: 133.62976, y: 30}
+  m_AnchoredPosition: {x: 52, y: -86}
+  m_SizeDelta: {x: 196.86017, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1653251876
 MonoBehaviour:
@@ -3336,7 +3339,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -4001,7 +4004,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1974718079
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4285,7 +4288,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 0
 --- !u!222 &2033004190
 CanvasRenderer:
   m_ObjectHideFlags: 0

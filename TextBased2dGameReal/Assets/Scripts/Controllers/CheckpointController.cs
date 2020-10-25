@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CheckpointController : MonoBehaviour
 {
+    public GameObject PlayerPlayer;
     private static CheckpointController instance;
     public Vector2 LastCheckpointPosition;
 
@@ -20,5 +22,6 @@ public class CheckpointController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        PlayerPlayer.GetComponent<Text>().text = GameModel.PlayingPlayer;
     }
 }

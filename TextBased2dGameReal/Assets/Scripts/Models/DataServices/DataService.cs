@@ -146,10 +146,23 @@ public class DataService  {
         Player newLocation = new Player
         {
             X = pX,
-            Y = pY
+            Y= pY
         };
         _connection.Insert(newLocation);
+
         return newLocation;
+       
+    }
+    //######################################TEST FOR RECORDING THE SCORE
+    public Player UpdateScore(int pScore)
+    {
+        Player UdScore = new Player
+        {
+            HiScore = pScore
+     
+        };
+        _connection.Insert(UdScore);
+        return UdScore;
     }
     //##################################################################################################
     public Location storeNewLocation(string pName, string pStory)
@@ -220,16 +233,17 @@ public class DataService  {
     //    return player;
     //}
 
-    public void  storePlayer(Player pPlayer)
-    {
-        
-        _connection.InsertOrReplace(pPlayer);
-   
-    }
+    //public void  storePlayer(Player pPlayer) Method not needed 
+    //{
 
+    //    _connection.InsertOrReplace(pPlayer);
+
+    //}
+  
     public Player getPlayer(string pPlayerName)// Method with a where clause to retrieve the player name
     {
         return _connection.Table<Player>().Where(x => x.Name == pPlayerName).FirstOrDefault();
+ 
     }
 
     //   Example 

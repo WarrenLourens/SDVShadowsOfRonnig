@@ -12,6 +12,7 @@ public class RegisterPlayer : MonoBehaviour
     // public GameObject player_Name;
     public InputField user_name;
     public InputField password;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +25,7 @@ public class RegisterPlayer : MonoBehaviour
         {
             case GameModel.PasswdMode.OK:
                 Debug.Log("Good Login");
-              //  GetPlayer();
+                //GetPlayer();
                 // Put name into the text 
                 // Gto to the scene or locaiton
                 break;
@@ -43,11 +44,11 @@ public class RegisterPlayer : MonoBehaviour
         GameModel.RegisterPlayer(user_name.text, password.text);// Places the user input fields as the parameters for the GameModel RegisterPlayer method
 
     }
-   void GetPlayer()
-    {
-        GameModel.currentPlayer = GameModel.ds.getPlayer(user_name.text);
+   //void GetPlayer()
+   // {
+   //     GameModel.currentPlayer = GameModel.ds.getPlayer(user_name.text);
       
-    }
+   // }
 
   
 }

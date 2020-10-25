@@ -11,6 +11,7 @@ using SQLite4Unity3d;
 public static class GameModel
 {
     public static CheckpointController CP;
+    public static string PlayingPlayer;// Test Variable to store the playing charactr name###################
 	static String _name;
 
 	public static string Name{
@@ -51,6 +52,7 @@ public static class GameModel
                 result = GameModel.PasswdMode.OK;
                 GameModel.currentPlayer = aPlayer; // << WATCHOUT THIS IS A SIDE EFFECT
                 GameModel.currentLocale = GameModel.ds.GetPlayerLocation(GameModel.currentPlayer);
+                GameModel.PlayingPlayer = pName;//#############################WORKS
             }
             else
             {
@@ -65,16 +67,22 @@ public static class GameModel
 
     public static void RegisterPlayer(string pName, string pPassword) // registers the player using the input from the input textboxes
     {
-       
-       // GameModel.currentPlayer = GameModel.ds.storeNewPlayer(pName, pPassword, GameModel.currentLocale.Id, 100, 200);// justa adding the current location which is the starting location
+        GameModel.PlayingPlayer = pName;
+        // GameModel.currentPlayer = GameModel.ds.storeNewPlayer(pName, pPassword, GameModel.currentLocale.Id, 100, 200);// justa adding the current location which is the starting location
         //################################################################################################
         GameModel.currentPlayer = GameModel.ds.storeNewPlayer(pName, pPassword, GameModel.currentLocale.Id, 100, 200,(float) -3.218,(float) -4.54);
        //################################################################################################
     }
     public static void SavePlayer(float pX, float pY)//Test to update the current player x,y position########################
     {
-        GameModel.ds.CpLocation(pX,pY);
+       GameModel.currentPlayer = GameModel.ds.CpLocation(pX,pY);// current player is set to null that is why  the database is getting a new entry each time.
     }
+    //###############################################TEST 
+    public static void UpdateScore(int pScore)
+    {
+        GameModel.currentPlayer = GameModel.ds.UpdateScore(pScore);
+    }
+    //###############################################
 
     public static void SetupGame()
     {
@@ -96,7 +104,7 @@ public static class GameModel
 
             castle = forest.getLocation("North");
             castle.addLocation("South", forest);
-
+           
 
             startLocation = currentLocale; // this might be redundant
         }
