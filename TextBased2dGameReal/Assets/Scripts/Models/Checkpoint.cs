@@ -21,8 +21,8 @@ public class Checkpoint : MonoBehaviour
             cp.LastCheckpointPosition = transform.position;// Sets the LastCheckpointPosition to the Players current position
             DisplayCheckpoint.SetActive(true);
 
-                GameModel.currentPlayer = GameModel.ds.CpLocation(transform.position.x, transform.position.y);
-            GameModel.SaveP(transform.position.x,transform.position.y);// Test to update current player
+                //GameModel.currentPlayer = GameModel.ds.CpLocation(transform.position.x, transform.position.y);
+            GameModel.SaveP(transform.position.x,transform.position.y);// Updates the correct player
             
             DisplayCheckpoint.GetComponent<Text>().text = "You have reached a checkpoint";
         }

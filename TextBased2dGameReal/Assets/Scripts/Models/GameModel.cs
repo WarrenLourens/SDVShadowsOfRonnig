@@ -53,6 +53,7 @@ public static class GameModel
                 GameModel.currentPlayer = aPlayer; // << WATCHOUT THIS IS A SIDE EFFECT
                 GameModel.currentLocale = GameModel.ds.GetPlayerLocation(GameModel.currentPlayer);
                 GameModel.PlayingPlayer = pName;//#############################WORKS
+                
             }
             else
             {
@@ -68,26 +69,24 @@ public static class GameModel
     public static void RegisterPlayer(string pName, string pPassword) // registers the player using the input from the input textboxes
     {
         GameModel.PlayingPlayer = pName;
-        //################################################################################################
+ 
         GameModel.currentPlayer = GameModel.ds.storeNewPlayer(pName, pPassword, GameModel.currentLocale.Id, 100, 200, (float)-3.218, (float)-4.54);
-        //################################################################################################
+        
     }
-    public static void SavePlayer(float pX, float pY)//Test to update the current player x,y position########################
+  
+    public static void StoreScore(int pScore)// works 8)
     {
-        GameModel.currentPlayer = GameModel.ds.CpLocation(pX, pY);// current player is set to null that is why  the database is getting a new entry each time.
+        GameModel.ds.storeHscore(GameModel.ds.getPlayer(GameModel.PlayingPlayer), pScore);
+
     }
-    
-    //###############################################TEST 
+
+ 
     public static void SaveP(float pX, float pY)
     {
          GameModel.ds.storePlayer(GameModel.ds.getPlayer(GameModel.PlayingPlayer), pX, pY);
         
     }
-    public static void UpdateScore(int  pScore)
-    {
-        GameModel.currentPlayer = GameModel.ds.UpdateScore(pScore);
-    }
-    //###############################################
+  
 
     public static void SetupGame()
     {

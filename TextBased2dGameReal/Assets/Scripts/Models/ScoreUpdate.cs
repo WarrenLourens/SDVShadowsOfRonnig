@@ -19,10 +19,11 @@ public  class ScoreUpdate : MonoBehaviour
             if (collider.CompareTag("Player"))
             {
                 Points += 100;// adds 100 value to the points variable
+                GameModel.StoreScore(Points);
                 CurrentScore.GetComponent<Text>().text = Points.ToString();
-                playerScore.GetComponent<Text>().text = GameModel.PlayingPlayer +" : " + Points;// need to get the score from the player table
-                GameModel.UpdateScore(Points);
-                Destroy(this.gameObject);// destroys the coin after it has been collected
+               playerScore.GetComponent<Text>().text =GameModel.PlayingPlayer +" : " +Points;// need to get the score from the player table
+             
+                 Destroy(this.gameObject);// destroys the coin after it has been collected
             }
         }   
     }

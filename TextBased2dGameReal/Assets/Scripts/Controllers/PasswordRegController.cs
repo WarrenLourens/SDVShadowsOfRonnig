@@ -13,25 +13,7 @@ public class PasswordRegController : MonoBehaviour
     public InputField User_Name;
     public InputField Password;
    
-    public void StartScore()
-    {
-        if (GameModel.currentPlayer != null) { 
-           Score.text = GameModel.currentPlayer.HiScore.ToString();
-        }
-    }
-    //public void UpdateScore()
-    //{
-
-    //    if (GameModel.currentPlayer != null)
-    //    {
-    //        int newScore = 0;
-    //        newScore = Convert.ToInt32(Score.text) + 1;
-    //        GameModel.currentPlayer.HiScore = newScore;
-    //        GameModel.ds.storePlayer(GameModel.currentPlayer);
-    //        Score.text = newScore.ToString();
-    //    }
-    //}
-
+  
     private void HidePanels()
     {
         RegPanel.SetActive(false);
@@ -74,12 +56,7 @@ public class PasswordRegController : MonoBehaviour
         }
         
     }
-    // ##########################Test method
-    //public void PlayerPosition() {
-    //    GameModel.SavePlayer();
-    //}
-
-
+   
     public void RegisterPlayer() // public  method called RegisterPlayer accessable by unity game objects
     {
         GameModel.RegisterPlayer(User_Name.text, Password.text); // takes the input fields as parameters
@@ -91,13 +68,9 @@ public class PasswordRegController : MonoBehaviour
     {
         RegPanel.SetActive(false);// sets the registration panels to false on start
         PasspromptPanel.SetActive(false);
-        StartScore();
+       
         
     }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
+    
 }

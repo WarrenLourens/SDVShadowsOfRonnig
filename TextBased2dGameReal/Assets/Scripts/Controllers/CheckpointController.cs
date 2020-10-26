@@ -11,7 +11,8 @@ public class CheckpointController : MonoBehaviour
 
 
      void Awake()
-    {
+    { 
+       
         if (instance == null)// Checks to see if the instance object has been created
         {
             GameModel.CP = this;
