@@ -12,28 +12,28 @@ public static class GameModel
 {
     public static CheckpointController CP;
     public static string PlayingPlayer;// Test Variable to store the playing charactr name###################
-	static String _name;
+    static String _name;
 
-	public static string Name{
-		get 
-		{ 
-			return _name;  
-		}
-		set{
-			_name = value; 
-		}
+    public static string Name {
+        get
+        {
+            return _name;
+        }
+        set {
+            _name = value;
+        }
 
-	}
+    }
     // game model creates public objects of all the tables
     public static Location currentLocale;
     public static Player currentPlayer = null;
     public static Location startLocation;
     public static DataService ds = new DataService("ShadowsOfRonnin.db");
-    
+
     // enum type for value that is one of these.
     // Here enum is being used to determine 
     // Login Reg statuses.
-    public  enum PasswdMode{
+    public enum PasswdMode {
         NeedName,
         NeedPassword,
         OK,
@@ -45,9 +45,9 @@ public static class GameModel
         PasswdMode result = GameModel.PasswdMode.AllBad;
 
         Player aPlayer = ds.getPlayer(pName);//gets the player name from the database from the player table
-        if( aPlayer != null)// if it finds a matching player 
+        if (aPlayer != null)// if it finds a matching player 
         {
-            if(aPlayer.Password == pPassword)// if the player password matches the inputed password
+            if (aPlayer.Password == pPassword)// if the player password matches the inputed password
             {
                 result = GameModel.PasswdMode.OK;
                 GameModel.currentPlayer = aPlayer; // << WATCHOUT THIS IS A SIDE EFFECT
@@ -68,17 +68,22 @@ public static class GameModel
     public static void RegisterPlayer(string pName, string pPassword) // registers the player using the input from the input textboxes
     {
         GameModel.PlayingPlayer = pName;
-        // GameModel.currentPlayer = GameModel.ds.storeNewPlayer(pName, pPassword, GameModel.currentLocale.Id, 100, 200);// justa adding the current location which is the starting location
         //################################################################################################
-        GameModel.currentPlayer = GameModel.ds.storeNewPlayer(pName, pPassword, GameModel.currentLocale.Id, 100, 200,(float) -3.218,(float) -4.54);
-       //################################################################################################
+        GameModel.currentPlayer = GameModel.ds.storeNewPlayer(pName, pPassword, GameModel.currentLocale.Id, 100, 200, (float)-3.218, (float)-4.54);
+        //################################################################################################
     }
     public static void SavePlayer(float pX, float pY)//Test to update the current player x,y position########################
     {
-       GameModel.currentPlayer = GameModel.ds.CpLocation(pX,pY);// current player is set to null that is why  the database is getting a new entry each time.
+        GameModel.currentPlayer = GameModel.ds.CpLocation(pX, pY);// current player is set to null that is why  the database is getting a new entry each time.
     }
+    
     //###############################################TEST 
-    public static void UpdateScore(int pScore)
+    public static void SaveP(float pX, float pY)
+    {
+         GameModel.ds.storePlayer(GameModel.ds.getPlayer(GameModel.PlayingPlayer), pX, pY);
+        
+    }
+    public static void UpdateScore(int  pScore)
     {
         GameModel.currentPlayer = GameModel.ds.UpdateScore(pScore);
     }
@@ -110,8 +115,9 @@ public static class GameModel
         }
         else
             currentLocale = GameModel.ds.GetFirstLocation();
-
+       
     }
+   
 
 }
 

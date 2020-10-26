@@ -139,27 +139,29 @@ public class DataService  {
         return GetLocation(aPlayer.LocationId);
 
     }
+
     //##################################################################################################
     // Added method of updateing the private X,Y proprties in the player 
     public Player CpLocation(float pX, float pY)
     {
-        Player newLocation = new Player
+
+        Player newLocation = GameModel.currentPlayer; // CREATES A NEW ENTRY EACH TIME @ ISSUE@
         {
-            X = pX,
-            Y= pY
-        };
+            newLocation.X = pX;
+            newLocation.Y = pY;
+        }
         _connection.Insert(newLocation);
 
-        return newLocation;
-       
+        return (newLocation);
+
     }
-    //######################################TEST FOR RECORDING THE SCORE
+    //######################################TEST FOR RECORDING THE SCORE ISSUE WITH CREATING NEW RECORD
     public Player UpdateScore(int pScore)
     {
         Player UdScore = new Player
         {
             HiScore = pScore
-     
+
         };
         _connection.Insert(UdScore);
         return UdScore;
@@ -175,12 +177,12 @@ public class DataService  {
         _connection.Insert(newLocation); // Store the location 
         return newLocation;  // return the location
     }
-    public Location storeLocation(Location pLocation)
-    {
+    //public Location storeLocation(Location pLocation)
+    //{
   
-        _connection.InsertOrReplace(pLocation); // Store the location 
-        return pLocation; 
-    }
+    //    _connection.InsertOrReplace(pLocation); // Store the location 
+    //    return pLocation; 
+    //}
 
 
     public void storeFromTo(int pFromID, int pToID, string pDirection)
@@ -233,14 +235,16 @@ public class DataService  {
     //    return player;
     //}
 
-    //public void  storePlayer(Player pPlayer) Method not needed 
-    //{
+    public void  storePlayer(Player pPlayer, float pX, float pY) // Looking good so far
+    {
+        pPlayer.X = pX;
+        pPlayer.Y = pY;
+           
+        _connection.InsertOrReplace(pPlayer);
 
-    //    _connection.InsertOrReplace(pPlayer);
+    }
 
-    //}
-  
-    public Player getPlayer(string pPlayerName)// Method with a where clause to retrieve the player name
+public Player getPlayer(string pPlayerName)// Method with a where clause to retrieve the player name
     {
         return _connection.Table<Player>().Where(x => x.Name == pPlayerName).FirstOrDefault();
  
@@ -269,4 +273,5 @@ public class DataService  {
     //	return _connection.Table<Person>().Where(x => x.Name == "Roberto");
     //}
 
+  
 }

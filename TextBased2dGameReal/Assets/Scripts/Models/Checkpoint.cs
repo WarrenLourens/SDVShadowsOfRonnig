@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Checkpoint : MonoBehaviour
 {
+
     private CheckpointController cp;
     public GameObject DisplayCheckpoint;
 
@@ -20,7 +21,8 @@ public class Checkpoint : MonoBehaviour
             cp.LastCheckpointPosition = transform.position;// Sets the LastCheckpointPosition to the Players current position
             DisplayCheckpoint.SetActive(true);
 
-                GameModel.currentPlayer = GameModel.ds.CpLocation(transform.position.x, transform.position.y);// test Method
+                GameModel.currentPlayer = GameModel.ds.CpLocation(transform.position.x, transform.position.y);
+            GameModel.SaveP(transform.position.x,transform.position.y);// Test to update current player
             
             DisplayCheckpoint.GetComponent<Text>().text = "You have reached a checkpoint";
         }

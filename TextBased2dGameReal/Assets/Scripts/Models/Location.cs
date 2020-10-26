@@ -16,7 +16,10 @@ public class Location
     public int Id { get; set; }
     public string Name { get => name; set => name = value; }
     public string Story { get => story; set => story = value; }
+   //public float X { get; set; }
+   // public float Y { get; set; }
   
+   
 
     public void addLocation(string pDirection, string pName, string pStory)
     {
