@@ -11,7 +11,7 @@ using SQLite4Unity3d;
 public static class GameModel
 {
     public static CheckpointController CP;
-    public static string PlayingPlayer;// Test Variable to store the playing charactr name###################
+    public static string PlayingPlayer;// Variable to store the current player nane 
     static String _name;
 
     public static string Name {
@@ -52,7 +52,7 @@ public static class GameModel
                 result = GameModel.PasswdMode.OK;
                 GameModel.currentPlayer = aPlayer; // << WATCHOUT THIS IS A SIDE EFFECT
                 GameModel.currentLocale = GameModel.ds.GetPlayerLocation(GameModel.currentPlayer);
-                GameModel.PlayingPlayer = pName;//#############################WORKS
+                GameModel.PlayingPlayer = pName;
                 
             }
             else
@@ -74,7 +74,7 @@ public static class GameModel
         
     }
   
-    public static void StoreScore(int pScore)// works 8)
+    public static void StoreScore(int pScore)
     {
         GameModel.ds.storeHscore(GameModel.ds.getPlayer(GameModel.PlayingPlayer), pScore);
 
