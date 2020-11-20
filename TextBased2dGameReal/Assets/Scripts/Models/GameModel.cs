@@ -5,11 +5,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using SQLite4Unity3d;
+using UnityEngine.UI;
 
 // Is this a factory?
 
 public static class GameModel
+    
 {
+    public static GameObject GamePlayer;
     public static CheckpointController CP;
     public static string PlayingPlayer;// Variable to store the current player nane 
     static String _name;
@@ -30,6 +33,7 @@ public static class GameModel
     public static Location startLocation;
     public static DataService ds = new DataService("ShadowsOfRonnin.db");
 
+    public static JSONDropService jsDrop = new JSONDropService { Token = "06d8e924-e61e-4b1f-ae2b-8575a0cdf85c" };
     // enum type for value that is one of these.
     // Here enum is being used to determine 
     // Login Reg statuses.
@@ -71,9 +75,31 @@ public static class GameModel
         GameModel.PlayingPlayer = pName;
  
         GameModel.currentPlayer = GameModel.ds.storeNewPlayer(pName, pPassword, GameModel.currentLocale.Id, 100, 200, (float)-3.218, (float)-4.54);
-        
+        networkRegister();
     }
   
+    public static void networkRegister()
+    {
+        jsDrop.Create<Person, JsnReceiver>(new Person
+        {
+            Name = "UUUUUUUUUUU",// give the call an example of the data it needs to store
+            Score = 0,
+            Password = "***************************"
+        }, jsnReceiveCreateDel);
+    }
+
+    public static void jsnReceiveCreateDel(JsnReceiver pReceived)
+    {
+        Debug.Log(pReceived.JsnMsg + "..." + pReceived.Msg);
+        jsDrop.Store<Person, JsnReceiver>(new List<Person>
+        {
+            new Person{Name=GameModel.currentPlayer.Name,Score=0,Password=GameModel.currentPlayer.Password}
+        }, jsnReceiverStoreDel);
+    }
+    public static void jsnReceiverStoreDel(JsnReceiver pReceived)
+    {
+        Debug.Log(pReceived.JsnMsg + "..." + pReceived.Msg);
+    }
     public static void StoreScore(int pScore)
     {
         GameModel.ds.storeHscore(GameModel.ds.getPlayer(GameModel.PlayingPlayer), pScore);
@@ -86,7 +112,13 @@ public static class GameModel
          GameModel.ds.storePlayer(GameModel.ds.getPlayer(GameModel.PlayingPlayer), pX, pY);
         
     }
-  
+
+    //public static void  GetCheckpoint()
+    //{
+    //   GameModel.ds.getAllPlayer();
+    //}
+   
+
 
     public static void SetupGame()
     {

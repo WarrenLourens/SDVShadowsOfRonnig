@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class Checkpoint : MonoBehaviour
 {
-
+ 
+    public static DataService ds = new DataService("ShadowsOfRonnin.db");
     private CheckpointController cp;
     public GameObject DisplayCheckpoint;
 
@@ -23,8 +24,7 @@ public class Checkpoint : MonoBehaviour
 
                 //GameModel.currentPlayer = GameModel.ds.CpLocation(transform.position.x, transform.position.y);
             GameModel.SaveP(transform.position.x,transform.position.y);// Updates the correct player
-            
-            DisplayCheckpoint.GetComponent<Text>().text = "You have reached a checkpoint";
+             DisplayCheckpoint.GetComponent<Text>().text = "You have reached a checkpoint";
         }
     }
     private void OnTriggerExit2D(Collider2D other)

@@ -32,14 +32,19 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {// The movement code is placed in FixedUpdate as we are dealing with physics 
-        float horizontal = Input.GetAxis("Horizontal");
-       // GameModel.currentPlayer.LocationX = horizontal;
 
-        HandleMovement(horizontal);
-        Flip(horizontal);
-        HandleAttacks();
-        ResetValues();
+       
+            float horizontal = Input.GetAxis("Horizontal");
+            // GameModel.currentPlayer.LocationX = horizontal;
+
+            HandleMovement(horizontal);
+            Flip(horizontal);
+            HandleAttacks();
+            ResetValues();
+        
+    
     }
+
     private void HandleMovement(float horizontal)
     {
         if (!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack")) 

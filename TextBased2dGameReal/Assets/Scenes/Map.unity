@@ -392,6 +392,7 @@ MonoBehaviour:
   PlayerInput: 
   InputField: {fileID: 268266391}
   textDisplay: {fileID: 0}
+  HighScore: {fileID: 0}
 --- !u!4 &822611880
 Transform:
   m_ObjectHideFlags: 0
@@ -442,7 +443,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -412, y: -305}
+  m_AnchoredPosition: {x: -361, y: -169}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1171301191
@@ -737,8 +738,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0018463, y: 0}
-  m_SizeDelta: {x: 1023.9963, y: 768}
+  m_AnchoredPosition: {x: 0.000045776, y: 0}
+  m_SizeDelta: {x: 934.99994, y: 511}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1598647696
 MonoBehaviour:
@@ -814,7 +815,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -412, y: -347}
+  m_AnchoredPosition: {x: -361, y: -214}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1612394328

@@ -13,6 +13,7 @@ public class DataService  {
 
 	private SQLiteConnection _connection; // open a connection to  to the sqlite database
 
+    public SQLiteConnection Connection { get { return _connection; } }
 	public DataService(string DatabaseName){
 
 #if UNITY_EDITOR
@@ -219,29 +220,17 @@ public class DataService  {
         return _connection.Table<Player>().Where(x => x.Name == pPlayerName).FirstOrDefault();
  
     }
+
    
-    //   Example 
-    // public Person GetJohnny(){
-    //	return _connection.Table<Person>().Where(x => x.Name == "Johnny").FirstOrDefault();
+    //public Player getAllPlayer(float pX)// Method with a where clause to retrieve the player name
+    //{
+    //    return _connection.Table<Player>().Where(x=> x.X == pX).FirstOrDefault();
+
     //}
 
-    //public Person CreatePerson(){
-    //	var p = new Person{
-    //			Name = "Johnny",
-    //			Surname = "Mnemonic",
-    //			Age = 21
-    //	};
-    //	_connection.Insert (p);
-    //	return p;
-    //}
+  
 
-    //public IEnumerable<Person> GetPersons(){
-    //	return _connection.Table<Person>();
-    //}
-
-    //public IEnumerable<Person> GetPersonsNamedRoberto(){
-    //	return _connection.Table<Person>().Where(x => x.Name == "Roberto");
-    //}
+   
 
 
 }

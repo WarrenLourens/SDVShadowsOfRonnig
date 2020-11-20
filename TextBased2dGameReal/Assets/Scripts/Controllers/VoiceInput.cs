@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Windows.Speech;
+//using UnityEngine.Windows.Speech;
 
 public class VoiceInput : MonoBehaviour
 {
-    KeywordRecognizer keyWordRecognizer;
-    public Text output;
+ //   KeywordRecognizer keyWordRecognizer;
+//    public Text output;
 
 }
